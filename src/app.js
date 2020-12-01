@@ -18,7 +18,7 @@ app.use(bodyParser.json())
 app.get('/mario',(req,res)=>{
     marioModel.find()
     .then((result)=>{
-        res.status(200).json(result);
+        res.json(result);
     })
     .catch((error)=>{
         res.status(400).json({"message": error.message});
