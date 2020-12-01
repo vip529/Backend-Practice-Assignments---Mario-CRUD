@@ -16,7 +16,7 @@ app.use(bodyParser.json())
 
 
 app.get('/mario',(req,res)=>{
-    marioModel.find({})
+    marioModel.find()
     .then((result)=>{
         res.json(result);
     })
