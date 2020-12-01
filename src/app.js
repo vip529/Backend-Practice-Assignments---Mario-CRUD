@@ -29,13 +29,11 @@ app.get('/mario/:id',(req,res)=>{
     const id = req.params.id;
     marioModel.findById(id)
     .then((result) => {
-        
-
-        if(!result){
-            res.status(400).json({"message": result});
-        }else{
+        // if(result){
+        //     res.status(400).json({"message": result});
+        // }else{
             res.json(result);
-        }
+        // }
     })
     .catch((error)=>{
         res.status(400).json({"message": error.message});
