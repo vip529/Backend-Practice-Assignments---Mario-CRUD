@@ -63,7 +63,12 @@ app.patch('/mario/:id',(req,res)=>{
     const updates = req.body;
     console.log(updates)
     marioModel.findByIdAndUpdate(id,updates)
+    
     .then((result)=>{
+        if(result == null){
+            res.status(400).json({"message": result});
+            return;
+        }
         res.status(200).json(result);
     })
     .catch((error)=>{
@@ -76,12 +81,11 @@ app.delete('/mario/:id',(req,res) =>{
     const id = req.params.id;
     marioModel.findByIdAndDelete(id)
     .then((result)=>{
-        if(!result){
+        if(result == null){
             res.status(400).json({"message": result});
-        }else{
-            res.status(200).json({"message": 'character deleted'});
+            return;
         }
-        
+        res.status(200).json({"message": 'character deleted'});
     })
     .catch((error)=>{
         res.status(400).json({"message": error.message});
