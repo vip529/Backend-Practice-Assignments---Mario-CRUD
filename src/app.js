@@ -17,11 +17,7 @@ app.use(bodyParser.json())
 app.get('/mario',(req,res)=>{
     marioModel.find({})
     .then((result)=>{
-        let marioList = result.map((mario)=>{
-            return {"name": mario.name,"weight": mario.weight}
-        })
-        
-        res.status(200).json(marioList);
+        res.json(result);
     })
     .catch((error)=>{
         res.status(400).json({"message": error.message});
@@ -32,7 +28,13 @@ app.get('/mario/:id',(req,res)=>{
     const id = req.params.id;
     marioModel.findById(id)
     .then((result) => {
-        res.status(200).json(result);
+        
+
+        if(!result){
+            res.status(400).json({"message": result});
+        }else{
+            res.json(result);
+        }
     })
     .catch((error)=>{
         res.status(400).json({"message": error.message});
@@ -74,7 +76,12 @@ app.delete('/mario/:id',(req,res) =>{
     const id = req.params.id;
     marioModel.findByIdAndDelete(id)
     .then((result)=>{
-        res.status(200).json({"message": 'character deleted'});
+        if(!result){
+            res.status(400).json({"message": result});
+        }else{
+            res.status(200).json({"message": 'character deleted'});
+        }
+        
     })
     .catch((error)=>{
         res.status(400).json({"message": error.message});
