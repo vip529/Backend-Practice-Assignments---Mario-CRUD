@@ -12,11 +12,11 @@ const marioSchema = new mongoose.Schema({
 })
 const marioModel = mongoose.model('marioModel',marioSchema);
 
-const refreshAll = async () => {
-    await marioModel.deleteMany({})
-    // console.log(connection)
-    await marioModel.insertMany({name:"Luigi", weight: 60})
-}
-refreshAll()
+// const refreshAll = async () => {
+//     await marioModel.deleteMany({})
+//     // console.log(connection)
+//     await marioModel.insertMany({name:"Luigi", weight: 60})
+// }
+// refreshAll()
 
 module.exports = marioModel;

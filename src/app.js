@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require("body-parser");
 const marioModel = require('./models/marioChar');
+const mongoose  = require('mongoose');
 
 // Middlewares
 app.use(express.urlencoded());
@@ -85,7 +86,7 @@ app.delete('/mario/:id',(req,res) =>{
             res.status(400).json({"message": result});
             return;
         }
-        res.status(200).json({"message": 'character deleted'});
+        res.status(200).json({"message": "character deleted"});
     })
     .catch((error)=>{
         res.status(400).json({"message": error.message});
