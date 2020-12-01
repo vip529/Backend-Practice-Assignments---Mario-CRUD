@@ -10,7 +10,7 @@ const marioSchema = new mongoose.Schema({
         required: true,
     }
 })
-const marioModel = mongoose.model('marioChar',marioSchema);
+const marioModel = mongoose.model('marioModel',marioSchema);
 
 // const refreshAll = async () => {
 //     await marioModel.deleteMany({})
