@@ -18,7 +18,7 @@ app.use(bodyParser.json())
 app.get('/mario',(req,res)=>{
     marioModel.find()
     .then((result)=>{
-        res.json(result);
+        res.status(201).json(result);
     })
     .catch((error)=>{
         res.status(400).json({"message": error.message});
@@ -83,13 +83,13 @@ app.delete('/mario/:id',(req,res) =>{
     marioModel.findByIdAndDelete(id)
     .then((result)=>{
         if(result == null){
-            res.status(400).json({"message": result});
+            res.status(404).json({"message": result});
             return;
         }
         res.status(200).json({"message": "character deleted"});
     })
     .catch((error)=>{
-        res.status(400).json({"message": error.message});
+        res.status(404).json({"message": error.message});
     })
 })
 
