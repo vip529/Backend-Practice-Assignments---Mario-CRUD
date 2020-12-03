@@ -61,7 +61,7 @@ app.patch('/mario/:id',(req,res)=>{
     const id = req.params.id;
     const updates = req.body;
     console.log(updates)
-    marioModel.findByIdAndUpdate(id,updates)
+    marioModel.findByIdAndUpdate(id,updates,{new:true})
     
     .then((result)=>{
         // if(result == null){
