@@ -29,11 +29,11 @@ app.get('/mario/:id',(req,res)=>{
     const id = req.params.id;
     marioModel.findById(id)
     .then((result) => {
-        if(result){
-            res.status(400).json({"message": result});
-        }else{
+        // if(result){
+        //     res.status(400).json({"message": result});
+        // }else{
             res.json(result);
-        }
+        // }
     })
     .catch((error)=>{
         res.status(400).json({"message": error.message});
@@ -64,10 +64,10 @@ app.patch('/mario/:id',(req,res)=>{
     marioModel.findByIdAndUpdate(id,updates)
     
     .then((result)=>{
-        if(result == null){
-            res.status(400).json({"message": result});
-            return;
-        }
+        // if(result == null){
+        //     res.status(400).json({"message": result});
+        //     return;
+        // }
         res.status(200).json(result);
     })
     .catch((error)=>{
@@ -80,10 +80,10 @@ app.delete('/mario/:id',(req,res) =>{
     const id = req.params.id;
     marioModel.findByIdAndDelete(id)
     .then((result)=>{
-        if(result == null){
-            res.status(400).json({"message": result});
-            return;
-        }
+        // if(result == null){
+        //     res.status(400).json({"message": result});
+        //     return;
+        // }
         res.status(200).json({"message": "character deleted"});
     })
     .catch((error)=>{
